@@ -4,11 +4,11 @@ public class BST<Key extends Comparable<Key>, Value> {
 	private Node root;
 	
 	private class Node {
-		private Key key;			//键
-		private Value value;		//值
-		private Node left;			//指向子树的链接
-		private Node right;			//指向右树的链接
-		private int N;				//以该节点为根的子树中的节点总数
+		private Key key;
+		private Value value;
+		private Node left;
+		private Node right;
+		private int N;
 		public Node(Key key, Value value, int N) {
 			this.key = key;
 			this.value = value;

@@ -42,7 +42,6 @@ public class BinarySearch {
 	public static void main(String[] args) {
 		int[] arr = {2, 3, 5, 33, 65, 83, 92, 532};
 		int a = 32;
-//		System.out.println("Î»ÖÃ£º" + BinarySearch.binarySearch(arr, a, 0, arr.length) + "  Ñ­»·´ÎÊı£º" + num);
-		System.out.println("Î»ÖÃ£º" + BinarySearch.binarySearch1(arr, a) + "  Ñ­»·´ÎÊı£º" + num);
+		System.out.println("äºŒåˆ†æŸ¥æ‰¾ç»“æœï¼š" + BinarySearch.binarySearch1(arr, a) + "  æŸ¥æ‰¾æ¬¡æ•°ï¼š" + num);
 	}
 }
