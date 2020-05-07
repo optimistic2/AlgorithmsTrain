@@ -62,7 +62,7 @@
         <dependency>
             <artifactId>spring-core</artifactId>
             <groupId>org.springframework</groupId>
-            <version>4.1.2.RELEASE</version>
+            <version>4.3.19.RELEASE</version>
         </dependency>
 
         <!-- protostuff -->
