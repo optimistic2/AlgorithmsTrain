@@ -17,47 +17,44 @@ public class Multi_CountDownLatch {
 
         final Object o = new Object();
 
-        t1 = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    countDownLatch.await();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                synchronized (o) {
-                    for (char c : chars1) {
-                        System.out.print(c);
-                        o.notify();
-                        try {
-                            o.wait();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    o.notify();
-                }
+        t1 = new Thread(() -> {
+            try {
+                countDownLatch.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        };
+            System.out.println("!!!!!!!!!!!!");
+            synchronized (o) {
+                for (char c : chars1) {
+                    System.out.print(c);
+                    o.notify();
+//                        System.out.println("释放");
+                    try {
+                        o.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                o.notify();
+            }
+        });
 
-        t2 = new Thread() {
-            @Override
-            public void run() {
-                synchronized (o) {
-                    countDownLatch.countDown();
-                    for (char c : chars2) {
-                        System.out.print(c);
-                        o.notify();
-                        try {
-                            o.wait();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
+        t2 = new Thread(() -> {
+            synchronized (o) {
+                countDownLatch.countDown();
+                System.out.println("###########");
+                for (char c : chars2) {
+                    System.out.print(c);
                     o.notify();
+                    try {
+                        o.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
+                o.notify();
             }
-        };
+        });
 
         t1.start();
         t2.start();

@@ -17,51 +17,45 @@ public class Multi_lock_condition {
         final Lock lock = new ReentrantLock();
         final Condition condition = lock.newCondition();
 
-        t1 = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    lock.lock();
-                    for (char c : chars1) {
-                        System.out.print(c);
-                        condition.signal();
-                        try {
-                            condition.await();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
+        t1 = new Thread(() -> {
+            try {
+                lock.lock();
+                for (char c : chars1) {
+                    System.out.print(c);
                     condition.signal();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    lock.unlock();
+                    try {
+                        condition.await();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
+                condition.signal();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                lock.unlock();
             }
-        };
+        });
 
-        t2 = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    lock.lock();
-                    for (char c : chars2) {
-                        System.out.print(c);
-                        condition.signal();
-                        try {
-                            condition.await();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
+        t2 = new Thread(() -> {
+            try {
+                lock.lock();
+                for (char c : chars2) {
+                    System.out.print(c);
                     condition.signal();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    lock.unlock();
+                    try {
+                        condition.await();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
+                condition.signal();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                lock.unlock();
             }
-        };
+        });
 
         t1.start();
         t2.start();

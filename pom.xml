@@ -8,7 +8,7 @@
     <name>com.cby.algorithms</name>
     <url>http://maven.apache.org</url>
     <properties>
-        <java-version>1.7</java-version>
+        <java-version>1.8</java-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mars-sdk.version>1.0.5</mars-sdk.version>
         <mars-sdkV3.version>1.0.1-SNAPSHOT</mars-sdkV3.version>
@@ -34,6 +34,12 @@
             <groupId>com.netflix.hystrix</groupId>
             <artifactId>hystrix-javanica</artifactId>
             <version>1.5.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.22</version>
         </dependency>
 
         <dependency>
