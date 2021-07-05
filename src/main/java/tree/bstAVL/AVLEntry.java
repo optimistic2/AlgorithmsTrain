@@ -3,6 +3,13 @@ package tree.bstAVL;
 import java.util.Map;
 
 /**
+ * 红黑树特性
+ * 1. 每个节点为黑色或红色
+ * 2. 根节点为黑色
+ * 3. 每个叶子节点（nil）是黑色
+ * 4. 如果一个节点是红色的则它的子节点必为黑色
+ * 5. 从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点
+ *
  * Created by biyanchen on 2020/2/13.
  */
 public class AVLEntry<K, V> implements Map.Entry<K, V> {

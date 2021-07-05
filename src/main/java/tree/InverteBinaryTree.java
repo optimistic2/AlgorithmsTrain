@@ -69,8 +69,8 @@ public class InverteBinaryTree {
                 TreeNode t = node.getLeft();
                 node.setLeft(node.getRight());
                 node.setRight(t);
-                if (node.getRight() != null) {
-                    stack.push(node.getRight());
+                if (node.getLeft() != null) {
+                    stack.push(node.getLeft());
                 }
             }
             return root;
@@ -140,4 +140,19 @@ public class InverteBinaryTree {
         return null;
     }
 
+    public static void main(String[] args) {
+        InverteBinaryTree inverteBinaryTree = new InverteBinaryTree();
+        TreeNode root = new TreeNode(4);
+        TreeNode left;
+        TreeNode right;
+        root.setLeft(left = new TreeNode(5));
+        root.setRight(right = new TreeNode(6));
+        left.setLeft(new TreeNode(7));
+        left.setRight(new TreeNode(8));
+        right.setLeft(new TreeNode(9));
+        right.setRight(new TreeNode(10));
+        System.out.println("前：" + root);
+        inverteBinaryTree.inverteTree_xian2(root);
+        System.out.println("后：" + root);
+    }
 }

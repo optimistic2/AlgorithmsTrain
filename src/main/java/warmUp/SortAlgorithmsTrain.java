@@ -27,7 +27,8 @@ public class SortAlgorithmsTrain {
         sort(arr, left, mid);
         System.out.println("____" + left + "___" + right + "__________");
         sort(arr, mid + 1, right);
-        merge(arr, left, mid, right);
+        System.out.println("=========" + left + "====" + right + "=======");
+        merge2(arr, left, mid, right);
     }
 
     private static void merge(int[] arr, int left, int center, int right) {
@@ -48,6 +49,27 @@ public class SortAlgorithmsTrain {
         }
         while (l1 <= right) {
             arr[l1] = tempArr[l1++];
+        }
+    }
+
+    private static void merge2(int[] arr, int left, int center, int right) {
+        int l1 = left, third = 0, mid = center + 1, length = right - left + 1;
+        int[] tempArr = new int[length];
+        while (left <= center && mid <= right) {
+            if (arr[left] < arr[mid]) {
+                tempArr[third++] = arr[left++];
+            } else {
+                tempArr[third++] = arr[mid++];
+            }
+        }
+        while (mid <= right) {
+            tempArr[third++] = arr[mid++];
+        }
+        while (left <= center) {
+            tempArr[third++] = arr[left++];
+        }
+        for (int i = 0; i < length; i++) {
+            arr[l1 + i] = tempArr[i];
         }
     }
 

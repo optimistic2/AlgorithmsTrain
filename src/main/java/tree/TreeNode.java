@@ -4,9 +4,11 @@ package tree;
  * Created by biyanchen on 2020/1/19.
  */
 public class TreeNode {
-   private int val;
+
+    private int val;
     private TreeNode left;
     private TreeNode right;
+
     public TreeNode(int x) {
         val = x;
     }
@@ -33,5 +35,14 @@ public class TreeNode {
 
     public void setRight(TreeNode right) {
         this.right = right;
+    }
+
+    @Override
+    public String toString() {
+        return "TreeNode{" +
+                "val=" + val +
+                ", left=" + left +
+                ", right=" + right +
+                '}';
     }
 }
